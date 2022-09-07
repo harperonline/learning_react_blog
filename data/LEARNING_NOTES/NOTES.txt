@@ -1,0 +1,75 @@
+*************
+USING IMPORTS
+*************
+//Importing a child component into say, App.js 
+import Header from './Header'; //Header is a child component as it's part of the local filesystem
+
+//Importing a hook from native react
+import { useState, useEffect } from 'react'; //Import the hook from 'react'
+
+//Importing a hook from an NPM module, like 'react-router-dom'
+//Install it first and look in package.json:
+npm i react-router-dom
+
+//Import it:
+import { Route, Switch, useHistory } from 'react-router-dom';
+
+To import the entire react module you would do " import React from 'react' ", 
+and now you can access the component inside React or any other component 
+like so "React.Component". 
+Using "import React, { Component } from 'react' ". you are importing both 
+the entire React module and a specific component of that module. 
+We use the {} syntax when we need only certain things inside a module such 
+as a variable, a function, a class or even another module from a large 
+library (fine amount of modules composed to work to gather) such as React.
+
+*****************************************
+CREATE A RUNNING JSON SERVER LOCALLY
+*****************************************
+In our case on port 3500 with the data:
+
+Install: 
+npm i json-server
+
+Run:
+npx json-server -p 3500 -w data/db.json
+
+***********************************
+USING STATE (think getters-setters)
+***********************************
+import { useState } from 'react';
+
+const [Name, setName] = useState('john');
+console.log(Name)
+> 'john'
+//Creates a property called 'Name' and initilaises it to 'john'
+//setName updates it like:
+
+setName('chris');
+
+console.log(Name) 
+> 'chris'
+
+
+****************
+USE EFFECT (HOOK)
+****************
+import { useEffect } from 'react';
+
+useEffect(()=>{
+    //Run atload time [] 
+},[]);
+
+const [fullName, setFullName] = useState('');
+useEffect(()=>{
+    //secondName has been changed by depole but firstName has not
+    setFullName(firstname + "" + secondName)
+
+},[firstName, secondName]);
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+import ChildComponent from './ChildComponent';
+
+const ComponentName = ({props}) => {
+
+    //THIS IS WHERE YOU PUT YOUR STATE AND FUNCTIONS
+    //FOR USE IN THIS COMPONENT OR TO PASS TO CHILD COMPONENTS (PROP DRILLING)
+
+    return(
+        <div>
+            //JSX
+            <ChildComponent />
+            //Other HTML
+        </div>
+    )
+
+}
+export default ComponentName
