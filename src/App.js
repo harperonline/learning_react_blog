@@ -25,10 +25,13 @@ function App() {
   const [updateBody, setupdateBody] = useState('');
   const history = useHistory();
   const { width } = useWindowSize(); //Why store ad an expression?
-  //This will call the hook and populate the data
+
+  //This will call the hook and populate the data at load time like
+  //you did with the original Axios READ GET call
   const {data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
-  //READ all posts at load
+  //READ all posts at load using old Axios method
+  /*
   useEffect(()=> { 
     const fetchPosts = async() => {
       try{
@@ -49,6 +52,11 @@ function App() {
     //Now as this is an anonymous arrow function, we need to invoke it
     fetchPosts();
   }, []) //run at load time only
+  */
+
+  useEffect(() => {
+    setPosts(data);
+  },[data]);
 
 
   useEffect(() => { //Remember that the array after [] contains things that when these change, it runs
@@ -125,7 +133,11 @@ function App() {
       <Switch>
 
         <Route exact path = "/">
-          <Home posts={searchResults}/>
+          <Home 
+            posts={searchResults}
+            fetchError={fetchError}
+            isLoading={isLoading}
+            />    
         </Route>
 
         <Route exact path = "/post">

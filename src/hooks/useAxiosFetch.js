@@ -10,6 +10,7 @@ const useAxiosFetch = (dataUrl) => {
         let isMounted = true;
         const source = axios.CancelToken.source();
 
+
         const fetchData = async (url) => {
             setisLoading(true);
             try{
@@ -24,18 +25,16 @@ const useAxiosFetch = (dataUrl) => {
                     setfetchError(err.message);
                     setData([]);
             }finally{
-                isMounted && setTimeout(() => {
-                    setisLoading(false);
-                }, 2000)
+                isMounted && setisLoading(false);         
             }
            
         }//end of fetch data
-
+        
         //Invoke the  function as being anonymous, you must invoke it
         fetchData(dataUrl); //pass in dataURL
 
         const cleanUp = () => {
-            console.log('clean up function');
+
             isMounted(false);
             source.cancel();
         }
